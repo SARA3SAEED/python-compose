@@ -1,14 +1,16 @@
-FROM python:3.10-alpine
+FROM python:latest
+
 
 WORKDIR /app
 
-COPY . /app
+COPY requirements.txt .
 
-RUN pip install --no--cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
+
+
+COPY . . 
 
 EXPOSE 5000
 
-ENV FLASK_APP=app.py
 
-
-CMD ["flask", "run", "--host=0.0.0.0"]
+CMD ["python","app.py"]

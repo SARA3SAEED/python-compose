@@ -6,17 +6,18 @@ services:
     depends_on:
       - db
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=test_db
+      HOST: db              
+      DB: test_db             
+      UNAME: postgres     
+      PASS: password  
     volumes:
       - ./app:/app
   db:
     image: postgres:13
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=test_db
+      POSTGRES_DB: test_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
     volumes:
       - db_data:/var/lib/postgresql/data
 volumes:
